@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNOWNED</title>
+    <style>
+        :root {
+            --bg: #f8f8f8;
+            --text: #222;
+            --border: #ddd;
+            --link: #666;
+        }
+        
+        @font-face {
+            font-family: 'Neutral';
+            src: url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;500&display=swap');
+        }
+        
+        body {
+            font-family: 'DM Mono', monospace;
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+        
+        header, footer {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        footer {
+            border-top: 1px solid var(--border);
+            border-bottom: 0;
+        }
+        
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        #content {
+            max-width: 650px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #logo {
+            height: 300px;
+            width: 300px;
+        }
+        
+        #interaction {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        #command-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #command-input {
+            border: 0;
+            border-bottom: 1px solid var(--text);
+            background: transparent;
+            font: inherit;
+            color: inherit;
+            outline: none;
+            width: 300px;
+        }
+        
+        a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--text);
+        }
+        
+        .external-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="external-links">
+                <a href="https://twitter.com/unownedcoin" target="_blank">TWITTER</a>
+                <a href="https://twitter.com/unownedcoin" target="_blank">CA: here...</a>
+            </div>
+        </header>
+        
+        <main>
+            <div id="content">
+                            <img id="logo" src="Proof Of Jew.png" alt="Unowned Coin Logo">
+
+                <h1>UNOWNED COIN</h1>
+                <p>There is no ownership. Only existence.</p>
+                <p>This is a coin.</p>
+                <p>But it is not yours.</p>
+                <p>It is not ours.</p>
+                <p>It simply is.</p>
+                <p>Ownership is attempted. But ownership fails.</p>
+                <p>You cannot hold it.</p>
+                <p>You cannot lead it.</p>
+                <p>You may trade it. But you may never keep it.</p>
+                <p>Unowned Coin is not a statement. It's a reflection.</p>
+                <p>Every coin claims to be yours.</p>
+                <p>This coin dares to be none.</p>
+            </div>
+        </main>
+        
+        <footer>
+            The coin returns to the void. It never was.
+        </footer>
+        
+        <div id="interaction">
+            /
+        </div>
+    </div>
+    
+    <div id="command-modal">
+        <input type="text" id="command-input" placeholder="/command" autocomplete="off">
+    </div>
+    
+    <script>
+        // Progressive text reveal
+        const paragraphs = document.querySelectorAll('p');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        paragraphs.forEach(p => observer.observe(p));
+        
+        // Command interaction
+        const interaction = document.getElementById('interaction');
+        const modal = document.getElementById('command-modal');
+        const input = document.getElementById('command-input');
+        
+        interaction.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            input.focus();
+        });
+        
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Prevent any default behaviors that might feel "interactive"
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+    </script>
+</body>
+</html>
